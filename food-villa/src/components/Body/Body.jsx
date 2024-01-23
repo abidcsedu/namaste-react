@@ -1,8 +1,9 @@
+import RestaurantCard from "./RestaurantCard"
 
 const Body = () => {
   return (
     <div>
-      body
+      <RestaurantCard/>
     </div>
   )
 }
