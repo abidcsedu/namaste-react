@@ -1,17 +1,13 @@
-import { IMG_CDN_URL, restaurantList } from '../../contents';
+import { IMG_CDN_URL } from '../../constants';
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ cloudinaryImageId, name, cuisines, totalRatings}) => {
   return (
-    <div className='restaurant-list'>
-        {restaurantList.map(restaurant => (
-        <div className='card' key={restaurant.data.id}>
-            <img src={IMG_CDN_URL + restaurant.data.cloudinaryImageId} alt='burger' />
-            <h2>{restaurant.data?.name}</h2>
-            <h3>{restaurant.data?.cuisines.join(', ')}</h3>
-            <h4>{restaurant.data.totalRatings} stars</h4>        
-        </div>
-        ))}
-    </div>
+      <div className='card'>
+          <img src={IMG_CDN_URL + cloudinaryImageId} alt='burger' />
+          <h2>{name}</h2>
+          <h3>{cuisines.join(', ')}</h3>
+          <h4>{totalRatings} stars</h4>        
+      </div>
   )
 }
 
