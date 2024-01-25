@@ -7,7 +7,7 @@ export const FETCH_MENU_URL =
 export const restaurantList = [
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "73011",
       name: "KFC",
@@ -132,7 +132,7 @@ export const restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "542132",
       name: "Domnik Pizza",
@@ -252,7 +252,7 @@ export const restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "321517",
       name: "FOOD PLANET RESTAURANT",
@@ -372,7 +372,7 @@ export const restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "311806",
       name: "Burger King",
@@ -497,7 +497,7 @@ export const restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "132460",
       name: "Annapurna Andhra Mess",
@@ -617,7 +617,7 @@ export const restaurantList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "496677",
       name: "Uncle Ji Restaurant",
