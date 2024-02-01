@@ -1,10 +1,14 @@
-import Title from "./Title"
+import Title from "./Title";
+
+const loggedInUser = () => {
+  return true;
+};
 
 const Header = () => {
   return (
-<div className='header'>
+    <div className="header">
       <Title />
-      <div className='nav-items'>
+      <div className="nav-items">
         <ul>
           <li>Home</li>
           <li>About</li>
@@ -12,7 +16,9 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
-    </div>  )
-}
+      {loggedInUser() ? <button>Log Out</button> : <button>Log In</button>}
+    </div>
+  );
+};
 
-export default Header
+export default Header;
