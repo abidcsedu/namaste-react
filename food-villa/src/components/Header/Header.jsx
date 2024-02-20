@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import RestaurantMenu from "../RestrauntMenu";
 import Title from "./Title";
 
 const Header = () => {
@@ -20,7 +19,6 @@ const Header = () => {
           <li><Link to='/cart'>Cart</Link></li>
         </ul>
       </div>
-      <RestaurantMenu/>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(!isLoggedIn)}>Log Out</button>
       ) : (
