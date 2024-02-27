@@ -7,8 +7,10 @@ function App() {
   return (
     <>
       <Header />
-      <Outlet/>
+      {/* <About /> */}
       {/* <Body /> */}
+      {/* <Contact /> */}
+      <Outlet />
       <Footer />
     </>
   );

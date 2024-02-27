@@ -11,15 +11,15 @@ const RestaurantMenu = () => {
   // console.log(params);
   // const {id} = params;
 
-  const { id } = useParams();
+  const { resId } = useParams();
 
   useEffect(() => {
-    getRestaurantInfo(id);
+    getRestaurantInfo(resId);
   }, []);
 
   async function getRestaurantInfo() {
     const data = await fetch(
-      `https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=${id}`
+      `https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=${resId}`
     );
     const json = await data.json();
     // console.log(json);
@@ -38,11 +38,12 @@ const RestaurantMenu = () => {
   ) : (
     <div className="menu">
       <div>
-        <h1>Restaurant {id}</h1>
+        <h1>Restaurant {resId}</h1>
         <h2>{restaurant.name}</h2>
         <img
           src={IMG_CDN_URL + restaurant.cloudinaryImageId}
           alt="restaurant menu image"
+          width={300}
         />
         <h3>{restaurant.areaName}</h3>
         <h3>{restaurant.city}</h3>
@@ -57,7 +58,9 @@ const RestaurantMenu = () => {
         <h1>Menu</h1>
         <ul>
           {menuItems.map((menuItem) => (
-            <li key={menuItem?.card?.info?.id}>{menuItem?.card?.info?.name} - {menuItem?.card?.info?.price}</li>
+            <li key={menuItem?.card?.info?.id}>
+              {menuItem?.card?.info?.name} - {menuItem?.card?.info?.price}
+            </li>
           ))}
         </ul>
       </div>

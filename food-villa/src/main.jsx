@@ -6,7 +6,8 @@ import About from "./components/Body/About.jsx";
 import Body from "./components/Body/Body.jsx";
 import Contact from "./components/Body/Contact.jsx";
 import Error from "./components/Error.jsx";
-import RestaurantMenu from "./components/RestrauntMenu.jsx";
+import Profile from "./components/Profile.jsx";
+import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import "./index.css";
 
 const appRouter = createBrowserRouter([
@@ -20,27 +21,41 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
+        // path: 'about' -> localhost:1234/about (from parent route /)
+        // path: '/about' -> localhost:1234/about (from root (ex: localhost:1234))
+        // that means both are same here
+        // because / means from the root
         path: "/about",
         element: <About />,
+        children: [
+          {
+            // path: 'profile' -> localhost:1234/about/profile
+            // path: '/profile' -> localhost:1234/profile
+            path: "profile",
+            // we use <Outlet /> component in the parent component (here <About />) to show this profile component
+            element: <Profile />,
+            // element: <ProfileClassComponent />,
+          },
+        ],
       },
       {
         path: "/contact",
         element: <Contact />,
       },
       {
-        path: "/restaurant/:id",
-        element: <RestaurantMenu/>
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
     ],
   },
-  {
-    path: "/contact",
-    element: <About />,
-  },
-  {
-    path: "/cart",
-    element: <About />,
-  },
+  // {
+  //   path: "/contact",
+  //   element: <Contact />,
+  // },
+  // {
+  //   path: "/cart",
+  //   element: <About />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
