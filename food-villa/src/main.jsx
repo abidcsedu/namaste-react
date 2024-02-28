@@ -6,6 +6,7 @@ import About from "./components/Body/About.jsx";
 import Body from "./components/Body/Body.jsx";
 import Contact from "./components/Body/Contact.jsx";
 import Error from "./components/Error.jsx";
+import Instamart from "./components/Instamart.jsx";
 import Profile from "./components/Profile.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import "./index.css";
@@ -45,6 +46,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: <Instamart />,
       },
     ],
   },

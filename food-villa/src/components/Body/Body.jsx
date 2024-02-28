@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../../hooks/useOnline";
+import { filterData } from "../../utils/helper";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
@@ -11,6 +13,7 @@ const Body = () => {
   // const [loading, setLoading] = useState(false);
 
   // console.log(restaurants);
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -38,20 +41,15 @@ const Body = () => {
     // setLoading(false);
   }
 
-  const filterData = () => {
-    setFilteredRestaurants(
-      allRestaurants.filter((restaurant) =>
-        restaurant.info.name
-          .toLocaleLowerCase()
-          .includes(searchText.toLocaleLowerCase())
-      )
-    );
-    setSearchText("");
-  };
-
   const handleChange = (e) => {
     setSearchText(e.target.value);
   };
+
+  const isOnline = useOnline();
+
+  if (!isOnline) {
+    return <h1>Offline, please check your internet connection!!!</h1>;
+  }
 
   if (allRestaurants.length === 0) return <Shimmer />;
 
@@ -71,7 +69,10 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            filterData();
+            const data = filterData(searchText, allRestaurants);
+
+            setFilteredRestaurants(data);
+            setSearchText("");
           }}
         >
           Search
@@ -79,7 +80,10 @@ const Body = () => {
       </div>
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant) => (
-          <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+          <Link
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
             <RestaurantCard
               {...restaurant.info}
               // key={index}
