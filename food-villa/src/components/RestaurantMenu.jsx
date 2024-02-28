@@ -21,27 +21,27 @@ const RestaurantMenu = () => {
     <div className="menu">
       <div>
         <h1>Restaurant {resId}</h1>
-        <h2>{restaurant.cards[2].card.card.info.name}</h2>
+        <h2>{restaurant?.cards[0]?.card?.card?.info?.name}</h2>
         <img
           src={
-            IMG_CDN_URL + restaurant.cards[2].card.card.info.cloudinaryImageId
+            IMG_CDN_URL + restaurant.cards[0].card?.card?.info.cloudinaryImageId
           }
           alt="restaurant menu image"
           width={300}
         />
-        <h3>{restaurant.cards[2].card.card.info.areaName}</h3>
-        <h3>{restaurant.cards[2].card.card.info.city}</h3>
-        {restaurant.cards[2].card.card.info.avgRating ? (
-          <h3>{restaurant.cards[2].card.card.info.avgRating} stars</h3>
+        <h3>{restaurant.cards[0].card?.card?.info.areaName}</h3>
+        <h3>{restaurant.cards[0].card?.card?.info.city}</h3>
+        {restaurant.cards[0].card?.card?.info.avgRating ? (
+          <h3>{restaurant.cards[0].card?.card?.info.avgRating} stars</h3>
         ) : (
           <h3>Not rated</h3>
         )}
-        <h3>{restaurant.cards[2].card.card.info.costForTwoMessage}</h3>
+        <h3>{restaurant.cards[0].card?.card?.info.costForTwoMessage}</h3>
       </div>
       <div>
         <h1>Menu</h1>
         <ul>
-          {restaurant.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map(
+          {restaurant.cards[4]?.groupedCard?.cardGroupMap.REGULAR.cards[1].card?.card?.itemCards.map(
             (menuItem) => (
               <li key={menuItem?.card?.info?.id}>
                 {menuItem?.card?.info?.name} - {menuItem?.card?.info?.price}

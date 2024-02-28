@@ -9,10 +9,10 @@ const Header = () => {
   const isOnline = useOnline();
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-50 shadow-md">
       <Title />
       <div className="nav-items">
-        <ul>
+        <ul className="flex py-10 gap-3">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -26,7 +26,7 @@ const Header = () => {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <Link to='/instamart'>Instamart</Link>
+            <Link to="/instamart">Instamart</Link>
           </li>
         </ul>
       </div>

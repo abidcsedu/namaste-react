@@ -41,3 +41,7 @@
   background: lightgray;
   margin: 20px;
 }
+.menu {
+  display: flex;
+  gap: 50px;
+}
