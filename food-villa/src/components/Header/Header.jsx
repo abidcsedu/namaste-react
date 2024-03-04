@@ -7,7 +7,7 @@ import UserContext from "../../utils/UserContext";
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const userData = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const isOnline = useOnline();
 
@@ -38,7 +38,7 @@ const Header = () => {
       ) : (
         <h2 className="p-10">Offline</h2>
       )}
-      {isOnline && <h2 className="p-10 font-bold text-red-400">{userData.name}</h2>}
+      {isOnline && <h2 className="p-10 font-bold text-red-400">{user.name}</h2>}
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(!isLoggedIn)}>Log Out</button>
       ) : (

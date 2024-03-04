@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../../hooks/useOnline";
 import { filterData } from "../../utils/helper";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import UserContext from "../../utils/UserContext";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -13,6 +14,9 @@ const Body = () => {
   // const [loading, setLoading] = useState(false);
 
   // console.log(restaurants);
+
+  const { user, setUser } = useContext(UserContext);
+  // console.log(userData);
 
   useEffect(() => {
     getRestaurants();
@@ -77,6 +81,30 @@ const Body = () => {
         >
           Search
         </button>
+        <br />
+        <div className="mt-2">
+          <label htmlFor="name" className="text-white p-2 me-2 bg-slate-500 rounded">
+            Name
+          </label>
+          <input
+            className="p-2 rounded-lg"
+            id="name"
+            type="text"
+            value={user.name}
+            onChange={(e) => setUser({ ...user, name: e.target.value })}
+          />
+        </div>
+        <br />
+        <label htmlFor="email" className="text-white p-2 me-2 bg-slate-500 rounded">
+          Email
+        </label>
+        <input
+          className="p-2 rounded-lg"
+          id="email"
+          type="text"
+          value={user.email}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        />
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
