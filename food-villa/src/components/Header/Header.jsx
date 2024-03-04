@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useOnline from "../../hooks/useOnline";
 import Title from "./Title";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,6 +11,10 @@ const Header = () => {
   const { user } = useContext(UserContext);
 
   const isOnline = useOnline();
+
+  const cartItems = useSelector((store) => store.cart.items);
+
+  // console.log(cartItems);
 
   return (
     <div className="flex justify-between bg-pink-50 shadow-md">
@@ -26,15 +31,15 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/instamart">Instamart</Link>
           </li>
           <li>
-            <Link to="/instamart">Instamart</Link>
+            <Link to="/cart">Cart - {cartItems.length} items</Link>
           </li>
         </ul>
       </div>
       {isOnline ? (
-        <h2 className="p-10">Online</h2>
+        <h2 className="p-10">Internet is okay </h2>
       ) : (
         <h2 className="p-10">Offline</h2>
       )}
